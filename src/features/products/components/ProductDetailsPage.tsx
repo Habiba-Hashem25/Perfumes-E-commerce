@@ -67,8 +67,8 @@ export function ProductDetailsPage({
   const relatedProducts =
     RELATED_IDS.map((id) =>
       relatedQuery.data?.items.find((item) => item.id === id),
-    ).filter((item): item is Product => Boolean(item) && item.id !== productId) ??
-    [];
+  ).filter((item): item is Product => item !== undefined && item.id !== productId) ??
+  [];
 
   if (productQuery.isLoading) {
     return (
